@@ -14,23 +14,44 @@ let usuario = prompt("Por favor ingresa el usuario");
 let contrasenia = prompt("Por favor ingresa la contraseña");
 
 if (usuario === usuarioDuenio && contrasenia === contraseñaDuenio){
-    alert ("Bienvenido " + usuarioDuenio + " a nuestro calculador salarial"); 
+    alert (`Bienvenido ${usuarioDuenio}`); 
 
-    let empleados = parseInt(prompt("Por favor ingresa la cantidad de empleados"));
-
-for ( i = 0 ; i < empleados ; i++) {
-    let nombre = prompt("Por favor ingresa el nombre del empleado");
-    let apellido = prompt("Por favor ingresa el apellido del empleado");
-    let salario = parseInt(prompt("Por favor ingresa el salario"));
-    let aumento = parseInt(prompt("Por favor ingresa el porcentaje del aumento a realizar"));
-    let nuevoSalario = salarioAumentado (salario,aumento)
-
-    alert ("El nuevo salario de " + nombre + " es " + " $" + nuevoSalario)
-}
 } else {
     alert ("usuario o contraseña incorrecta, volve a intentar");
-    
 }
+
+class Producto {
+    constructor(nombre, precio, img) {
+        this.nombre = nombre;
+        this.precio = Math.round(precio*1.21); 
+        this.img = img;
+    }
+}
+
+const modena = new Producto("Modena", 17000, "modena.jpg");
+const venecia = new Producto("Venecia", 15000, "venecia.jpg");
+const comodo = new Producto("Comodo", 13500, "comodo.jpg");
+const mega = new Producto("Mega", 16499, "mega.jpg");
+
+const arrayProductos = [modena, venecia, comodo, mega];
+
+const contenedorProductos = document.getElementById("contenedorProductos");
+
+arrayProductos.forEach( producto => {
+    const div = document.createElement("div");
+    div.className = "caja";
+    div.innerHTML = `<div class="card" style="width: 18rem;">
+                        <img src="${producto.img}" class="card-img-top" alt="productos">
+                        <div class="card-body">
+                        <h5 class="card-title">Nombre: ${producto.nombre} </h5>
+                        <p class="card-text">Precio: ${producto.precio} </p>
+                        <a href="#" class="btn btn-primary">Añadir al Carrito</a>
+                        </div>
+                    </div>
+                    `;
+    contenedorProductos.appendChild(div);
+})
+
 
 function setGradient() {
 	body.style.background = 
@@ -43,8 +64,3 @@ function setGradient() {
 	css.textContent = body.style.background + ";";
 }
 
-function salarioAumentado (salario,aumento) {
-    let ajusteSalarial = salario * (aumento/100) 
-    let salarioAumentado = ajusteSalarial + salario
-    return salarioAumentado
-    }; 

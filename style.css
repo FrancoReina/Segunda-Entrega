@@ -4,8 +4,9 @@ body {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: .5em;
-    top: 15%;
-	background: linear-gradient(to right, red , yellow); /* Standard syntax */
+    top: 20%;
+    margin-top: 30px;
+	background: linear-gradient(to right, red , yellow);
 }
 
 h1 {
@@ -24,4 +25,12 @@ h3 {
     text-transform: none;
     letter-spacing: 0.01em;
 
+}
+
+.caja {
+   
+    margin: 1rem;
+    padding: 1rem;
+    display: inline-block;
+	font: 900 1em 'Raleway', sans-serif;    
 }
